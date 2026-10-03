@@ -1,809 +1,739 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
+  Activity,
   ArrowRight,
   BookOpen,
   Brain,
-  ChevronRight,
-  Cpu,
+  BriefcaseBusiness,
+  Check,
+  ChevronDown,
+  CircleHelp,
+  Code2,
   GraduationCap,
   HeartPulse,
   Lightbulb,
   Menu,
-  Play,
+  Microscope,
+  Newspaper,
   Rocket,
   ShieldCheck,
   Sparkles,
   Stethoscope,
   X,
-  Zap,
 } from "lucide-react";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Health", href: "/health" },
-  { label: "Academy", href: "/academy" },
-  { label: "AI & Innovation", href: "/ai" },
-  { label: "Blog", href: "/blog" },
-  { label: "Resources", href: "/resources" },
-  { label: "About", href: "/about" },
-];
 
 const healthProducts = [
   {
     title: "TherapyDent 2.0",
     description:
-      "A digital learning platform designed to support dental therapy students and professionals with structured learning, revision and clinical resources.",
-    icon: Stethoscope,
+      "A modern learning platform built to help dental therapy students learn, revise and grow their clinical knowledge.",
     status: "Live",
-    statusClass: "status-live",
+    icon: Stethoscope,
     href: "https://therapydent.eduhetech.com/",
-    external: true,
   },
   {
     title: "OralScan AI",
     description:
-      "An AI-powered oral health screening concept designed to explore smarter and more accessible approaches to oral health technology.",
-    icon: Brain,
+      "An AI-powered oral health screening concept designed to explore smarter digital approaches to oral health.",
     status: "In development",
-    statusClass: "status-development",
-    href: "/ai",
-    external: false,
+    icon: Microscope,
   },
   {
     title: "Immunization Tracker",
     description:
-      "A planned digital tool for helping users organize and keep track of immunization information and schedules.",
-    icon: ShieldCheck,
+      "A future digital tool designed to help users organize and keep track of important immunization schedules.",
     status: "Coming soon",
-    statusClass: "status-coming",
-    href: "/health",
-    external: false,
+    icon: ShieldCheck,
   },
   {
     title: "Health Schedule",
     description:
-      "A future health-focused scheduling tool designed to help users organize important health activities and reminders.",
-    icon: HeartPulse,
+      "A planned digital health scheduling experience for reminders, appointments and important health activities.",
     status: "Coming soon",
-    statusClass: "status-coming",
-    href: "/health",
-    external: false,
+    icon: Activity,
+  },
+];
+
+const ecosystemItems = [
+  {
+    title: "Health",
+    description:
+      "Digital tools and educational experiences designed around health, wellness and healthcare learning.",
+    icon: HeartPulse,
+  },
+  {
+    title: "Education",
+    description:
+      "Learning platforms that make useful knowledge easier to access, understand and apply.",
+    icon: GraduationCap,
+  },
+  {
+    title: "AI & Innovation",
+    description:
+      "Exploring artificial intelligence and emerging technology to create smarter digital experiences.",
+    icon: Brain,
+  },
+  {
+    title: "Knowledge",
+    description:
+      "Articles, resources, guides and practical information for students, professionals and lifelong learners.",
+    icon: BookOpen,
   },
 ];
 
 const academyTopics = [
-  "AI & Productivity",
-  "App & Web Development",
-  "Digital Products",
-  "Digital Marketing",
+  "AI & productivity",
+  "App & web development",
+  "Digital products",
+  "Digital marketing",
   "Entrepreneurship",
-  "Technology for Health Professionals",
+  "Technology for health professionals",
 ];
 
-const blogTopics = [
+const blogItems = [
   {
     title: "Health + Technology",
     description:
-      "Ideas and practical insights at the intersection of healthcare, education and technology.",
+      "Ideas and practical perspectives on how technology is changing health education and digital healthcare.",
     icon: HeartPulse,
   },
   {
     title: "AI + Learning",
     description:
-      "How artificial intelligence is changing the way people learn, create and work.",
+      "Exploring practical ways artificial intelligence can support learning, productivity and innovation.",
     icon: Brain,
   },
   {
     title: "Digital Skills",
     description:
-      "Practical knowledge for building useful digital skills and products.",
-    icon: Zap,
+      "Useful knowledge for people who want to build, create, learn and participate in the digital economy.",
+    icon: Code2,
   },
 ];
 
-const resources = [
+const resourceItems = [
   {
     title: "Study Materials & Guides",
     description:
-      "Useful learning resources designed to make complex subjects easier to understand.",
+      "Practical educational resources created to support learning and professional development.",
     icon: BookOpen,
   },
   {
     title: "AI & Digital Tools",
     description:
-      "Explore tools and practical ideas for learning, creating and getting more done.",
-    icon: Cpu,
+      "Useful technology resources and practical guidance for modern learners and creators.",
+    icon: Lightbulb,
   },
   {
     title: "Practical Articles",
     description:
-      "Straightforward articles covering education, technology, health and digital opportunities.",
-    icon: Lightbulb,
+      "Clear, useful content covering health education, technology, AI and digital opportunities.",
+    icon: Newspaper,
   },
 ];
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <main className="site-shell">
-      {/* HEADER */}
+    <main>
+      {/* ================= HEADER ================= */}
       <header className="site-header">
-        <div className="container header-inner">
-          <Link href="/" className="brand" onClick={closeMobileMenu}>
-            <span className="brand-mark">
-              <Sparkles size={19} strokeWidth={2.4} />
-            </span>
+        <div className="container">
+          <nav className="navbar">
+            <a href="#home" className="logo" onClick={closeMenu}>
+              <span className="logo-mark">
+                <Sparkles size={19} strokeWidth={2.5} />
+              </span>
 
-            <span className="brand-text">
-              <strong>EduHeTech</strong>
-              <small>Technologies Limited</small>
-            </span>
-          </Link>
+              <span>
+                EduHe<span>Tech</span>
+              </span>
+            </a>
 
-          <nav className="desktop-nav">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                {item.label}
-              </Link>
-            ))}
+            <div className="desktop-nav">
+              <a href="#home">Home</a>
+              <a href="#health">Health</a>
+              <a href="#academy">Academy</a>
+              <a href="#ai">AI & Innovation</a>
+              <a href="#blog">Blog</a>
+              <a href="#resources">Resources</a>
+              <a href="#about">About</a>
+              <a href="#ecosystem" className="nav-button">
+                Explore
+              </a>
+            </div>
 
-            <Link href="/explore" className="nav-cta">
-              Explore
-              <ArrowRight size={15} />
-            </Link>
+            <button
+              className="menu-button"
+              aria-label="Open navigation menu"
+              onClick={() => setMenuOpen((value) => !value)}
+            >
+              {menuOpen ? <X size={25} /> : <Menu size={25} />}
+            </button>
           </nav>
 
-          <button
-            type="button"
-            className="mobile-menu-button"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileMenuOpen((value) => !value)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {mobileMenuOpen && (
-          <div className="mobile-menu">
-            <div className="container mobile-menu-inner">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMobileMenu}
-                >
-                  {item.label}
-                  <ChevronRight size={17} />
-                </Link>
-              ))}
-
-              <Link
-                href="/explore"
-                className="mobile-menu-cta"
-                onClick={closeMobileMenu}
-              >
-                Explore the ecosystem
-                <ArrowRight size={17} />
-              </Link>
-            </div>
+          <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+            <a href="#home" onClick={closeMenu}>
+              Home
+            </a>
+            <a href="#health" onClick={closeMenu}>
+              Health
+            </a>
+            <a href="#academy" onClick={closeMenu}>
+              Academy
+            </a>
+            <a href="#ai" onClick={closeMenu}>
+              AI & Innovation
+            </a>
+            <a href="#blog" onClick={closeMenu}>
+              Blog
+            </a>
+            <a href="#resources" onClick={closeMenu}>
+              Resources
+            </a>
+            <a href="#about" onClick={closeMenu}>
+              About
+            </a>
           </div>
-        )}
+        </div>
       </header>
 
-      {/* HERO */}
-      <section className="hero-section">
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <div className="eyebrow">
-              <span className="eyebrow-dot" />
-              EDUHETECH TECHNOLOGIES LIMITED
-            </div>
-
-            <h1>
-              Learn.
-              <br />
-              Create.
-              <br />
-              <span>Earn.</span>
-            </h1>
-
-            <p className="hero-description">
-              Technology-powered education and digital solutions for health,
-              learning and the future.
-            </p>
-
-            <div className="hero-actions">
-              <Link href="/explore" className="button button-primary">
-                Explore our ecosystem
-                <ArrowRight size={18} />
-              </Link>
-
-              <Link href="/academy" className="button button-secondary">
-                <Play size={17} />
-                Start learning
-              </Link>
-            </div>
-
-            <div className="hero-trust">
-              <span>
-                <HeartPulse size={16} />
-                Health
-              </span>
-
-              <span>
-                <GraduationCap size={16} />
-                Education
-              </span>
-
-              <span>
-                <Cpu size={16} />
-                AI & Innovation
-              </span>
-            </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="hero-orb">
-              <div className="orb-glow" />
-
-              <div className="orb-center">
-                <Sparkles size={28} />
-                <strong>EduHeTech</strong>
-                <span>Technology with purpose</span>
+      {/* ================= HERO ================= */}
+      <section className="hero" id="home">
+        <div className="container">
+          <div className="hero-grid">
+            <div>
+              <div className="eyebrow">
+                <Sparkles size={13} />
+                EDUHETECH TECHNOLOGIES LIMITED
               </div>
 
-              <div className="orb-item orb-health">
-                <HeartPulse size={18} />
-                <span>Health</span>
+              <h1>
+                Learn.
+                <br />
+                Create.
+                <br />
+                <span>Earn.</span>
+              </h1>
+
+              <p className="hero-description">
+                Technology-powered education and digital solutions for health,
+                learning and the future.
+              </p>
+
+              <div className="hero-actions">
+                <a href="#ecosystem" className="primary-button">
+                  Explore our ecosystem
+                  <ArrowRight size={16} />
+                </a>
+
+                <a href="#academy" className="secondary-button">
+                  Start learning
+                  <GraduationCap size={16} />
+                </a>
               </div>
 
-              <div className="orb-item orb-education">
-                <GraduationCap size={18} />
-                <span>Education</span>
-              </div>
+              <div className="hero-trust">
+                <div className="trust-item">
+                  <Check size={15} />
+                  Health
+                </div>
 
-              <div className="orb-item orb-ai">
-                <Brain size={18} />
-                <span>AI</span>
-              </div>
+                <div className="trust-item">
+                  <Check size={15} />
+                  Education
+                </div>
 
-              <div className="orb-item orb-knowledge">
-                <BookOpen size={18} />
-                <span>Knowledge</span>
+                <div className="trust-item">
+                  <Check size={15} />
+                  AI & Innovation
+                </div>
               </div>
             </div>
 
-            <div className="floating-card floating-card-top">
-              <span className="mini-icon">
-                <Stethoscope size={16} />
-              </span>
-              <div>
+            <div className="hero-visual">
+              <div className="ecosystem-orb">
+                <div className="orb-inner">
+                  <div>
+                    <strong>EduHeTech</strong>
+                    <p>Technology with purpose</p>
+                  </div>
+                </div>
+
+                <div className="orb-grid">
+                  <div className="orb-card">
+                    <div className="orb-icon">
+                      <HeartPulse size={19} />
+                    </div>
+                    <strong>Health</strong>
+                    <span>Digital health solutions</span>
+                  </div>
+
+                  <div className="orb-card">
+                    <div className="orb-icon">
+                      <GraduationCap size={19} />
+                    </div>
+                    <strong>Education</strong>
+                    <span>Learn and grow</span>
+                  </div>
+
+                  <div className="orb-card">
+                    <div className="orb-icon">
+                      <Brain size={19} />
+                    </div>
+                    <strong>AI</strong>
+                    <span>Intelligent innovation</span>
+                  </div>
+
+                  <div className="orb-card">
+                    <div className="orb-icon">
+                      <BookOpen size={19} />
+                    </div>
+                    <strong>Knowledge</strong>
+                    <span>Ideas and resources</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="floating-card live">
                 <strong>TherapyDent 2.0</strong>
-                <small>Live platform</small>
+                <span>Live platform</span>
               </div>
-              <span className="live-dot" />
-            </div>
 
-            <div className="floating-card floating-card-bottom">
-              <span className="mini-icon">
-                <Rocket size={16} />
-              </span>
-              <div>
+              <div className="floating-card future">
                 <strong>More to come</strong>
-                <small>Building the future</small>
+                <span>Building the ecosystem</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ECOSYSTEM */}
+      {/* ================= ECOSYSTEM ================= */}
       <section className="section section-light" id="ecosystem">
         <div className="container">
-          <div className="section-heading">
-            <div className="eyebrow">THE EDUHETECH ECOSYSTEM</div>
-            <h2>
-              One ecosystem.
-              <br />
-              <span>Many possibilities.</span>
-            </h2>
+          <div className="section-heading center">
+            <div className="section-label">Our ecosystem</div>
+
+            <h2>One ecosystem. Many possibilities.</h2>
+
             <p>
-              EduHeTech brings education, health technology, artificial
-              intelligence and practical digital knowledge together.
+              EduHeTech brings technology, education, health and innovation
+              together to create useful digital experiences.
             </p>
           </div>
 
           <div className="ecosystem-grid">
-            <Link href="/health" className="ecosystem-card">
-              <div className="ecosystem-icon">
-                <HeartPulse size={23} />
-              </div>
-              <span className="card-number">01</span>
-              <h3>Health</h3>
-              <p>
-                Digital tools and learning experiences for health students,
-                professionals and lifelong learners.
-              </p>
-              <span className="card-link">
-                Explore Health <ArrowRight size={16} />
-              </span>
-            </Link>
+            {ecosystemItems.map((item) => {
+              const Icon = item.icon;
 
-            <Link href="/academy" className="ecosystem-card">
-              <div className="ecosystem-icon">
-                <GraduationCap size={23} />
-              </div>
-              <span className="card-number">02</span>
-              <h3>Education</h3>
-              <p>
-                Practical learning experiences designed to help people learn,
-                create and grow.
-              </p>
-              <span className="card-link">
-                Explore Education <ArrowRight size={16} />
-              </span>
-            </Link>
+              return (
+                <article className="ecosystem-card" key={item.title}>
+                  <div className="card-icon">
+                    <Icon size={23} />
+                  </div>
 
-            <Link href="/ai" className="ecosystem-card">
-              <div className="ecosystem-icon">
-                <Brain size={23} />
-              </div>
-              <span className="card-number">03</span>
-              <h3>AI & Innovation</h3>
-              <p>
-                Exploring responsible AI-powered products that solve real
-                problems.
-              </p>
-              <span className="card-link">
-                Explore AI <ArrowRight size={16} />
-              </span>
-            </Link>
+                  <h3>{item.title}</h3>
 
-            <Link href="/resources" className="ecosystem-card">
-              <div className="ecosystem-icon">
-                <BookOpen size={23} />
-              </div>
-              <span className="card-number">04</span>
-              <h3>Knowledge</h3>
-              <p>
-                Articles, resources, guides and practical knowledge for a
-                changing digital world.
-              </p>
-              <span className="card-link">
-                Explore Knowledge <ArrowRight size={16} />
-              </span>
-            </Link>
+                  <p>{item.description}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* HEALTH */}
-      <section className="section health-section" id="health">
+      {/* ================= HEALTH ================= */}
+      <section className="section" id="health">
         <div className="container">
-          <div className="section-heading section-heading-split">
-            <div>
-              <div className="eyebrow">HEALTH TECHNOLOGY</div>
-              <h2>
-                Building smarter
-                <br />
-                <span>health experiences.</span>
-              </h2>
-            </div>
+          <div className="section-heading">
+            <div className="section-label">Health technology</div>
+
+            <h2>Building digital solutions for better learning.</h2>
 
             <p>
-              From professional education to emerging digital health tools,
-              EduHeTech is exploring practical technology for better learning
-              and healthcare experiences.
+              We are developing practical technology for health education,
+              digital health and the people who use them.
             </p>
           </div>
 
-          <div className="health-products-grid">
+          <div className="product-grid">
             {healthProducts.map((product) => {
               const Icon = product.icon;
 
-              const cardContent = (
-                <>
-                  <div className="product-card-top">
+              return (
+                <article className="product-card" key={product.title}>
+                  <div className="product-top">
                     <div className="product-icon">
-                      <Icon size={22} />
+                      <Icon size={25} />
                     </div>
 
                     <span
-                      className={`product-status ${product.statusClass}`}
+                      className={`status ${
+                        product.status === "Live"
+                          ? "live"
+                          : product.status === "In development"
+                            ? "dev"
+                            : "soon"
+                      }`}
                     >
                       {product.status}
                     </span>
                   </div>
 
-                  <h3>{product.title}</h3>
+                  <div className="product-content">
+                    <h3>{product.title}</h3>
 
-                  <p>{product.description}</p>
+                    <p>{product.description}</p>
 
-                  <span className="product-link">
-                    {product.external ? "Launch product" : "Learn more"}
-                    <ArrowRight size={16} />
-                  </span>
-                </>
-              );
-
-              if (product.external) {
-                return (
-                  <a
-                    key={product.title}
-                    href={product.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="product-card"
-                  >
-                    {cardContent}
-                  </a>
-                );
-              }
-
-              return (
-                <Link
-                  key={product.title}
-                  href={product.href}
-                  className="product-card"
-                >
-                  {cardContent}
-                </Link>
+                    {product.href ? (
+                      <a
+                        href={product.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="product-link"
+                      >
+                        Visit platform
+                        <ArrowRight size={14} />
+                      </a>
+                    ) : (
+                      <span className="product-link">
+                        Coming to EduHeTech
+                        <ArrowRight size={14} />
+                      </span>
+                    )}
+                  </div>
+                </article>
               );
             })}
           </div>
 
           <div className="future-banner">
-            <div className="future-banner-icon">
-              <Sparkles size={21} />
-            </div>
-
             <div>
-              <span>THE FUTURE IS BEING BUILT</span>
-              <h3>More health technology products are on the way.</h3>
-            </div>
-
-            <Link href="/health">
-              View health ecosystem
-              <ArrowRight size={17} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ACADEMY */}
-      <section className="section academy-section" id="academy">
-        <div className="container academy-grid">
-          <div>
-            <div className="eyebrow eyebrow-light">EDUHETECH ACADEMY</div>
-
-            <h2>
-              Learn skills
-              <br />
-              that help you
-              <br />
-              <span>create.</span>
-            </h2>
-
-            <p>
-              EduHeTech Academy will bring practical training in AI, digital
-              skills, technology, entrepreneurship and more.
-            </p>
-
-            <Link href="/academy" className="button button-light">
-              Explore Academy
-              <ArrowRight size={18} />
-            </Link>
-          </div>
-
-          <div className="academy-topics">
-            {academyTopics.map((topic, index) => (
-              <Link href="/academy" className="academy-topic" key={topic}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{topic}</strong>
-                <ChevronRight size={17} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AI */}
-      <section className="section ai-section" id="ai">
-        <div className="container ai-grid">
-          <div className="ai-visual">
-            <div className="ai-circle ai-circle-one" />
-            <div className="ai-circle ai-circle-two" />
-            <div className="ai-circle ai-circle-three" />
-
-            <div className="ai-core">
-              <Brain size={42} />
-              <strong>AI</strong>
-              <span>Innovation</span>
-            </div>
-
-            <span className="ai-chip ai-chip-one">Learning</span>
-            <span className="ai-chip ai-chip-two">Health</span>
-            <span className="ai-chip ai-chip-three">Creation</span>
-            <span className="ai-chip ai-chip-four">Automation</span>
-          </div>
-
-          <div>
-            <div className="eyebrow">AI & INNOVATION</div>
-
-            <h2>
-              Technology should
-              <br />
-              <span>solve real problems.</span>
-            </h2>
-
-            <p>
-              We are exploring AI-powered experiences that make education,
-              health and digital creation more accessible and useful.
-            </p>
-
-            <div className="ai-feature-list">
-              <div>
-                <Sparkles size={18} />
-                <span>AI-powered learning</span>
-              </div>
-
-              <div>
-                <HeartPulse size={18} />
-                <span>Intelligent health technology</span>
-              </div>
-
-              <div>
-                <Rocket size={18} />
-                <span>Future digital products</span>
-              </div>
-            </div>
-
-            <Link href="/ai" className="text-button">
-              Discover AI & Innovation
-              <ArrowRight size={17} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* BLOG */}
-      <section className="section section-light" id="blog">
-        <div className="container">
-          <div className="section-heading section-heading-split">
-            <div>
-              <div className="eyebrow">FROM THE BLOG</div>
-              <h2>
-                Ideas worth
-                <br />
-                <span>sharing.</span>
-              </h2>
-            </div>
-
-            <div>
+              <strong>And we are just getting started.</strong>
               <p>
-                Practical ideas and insights around health, technology,
-                artificial intelligence, learning and digital skills.
+                More health education and digital health applications will be
+                added to the EduHeTech ecosystem.
+              </p>
+            </div>
+
+            <Rocket size={28} />
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ACADEMY ================= */}
+      <section className="section section-dark" id="academy">
+        <div className="container">
+          <div className="academy-layout">
+            <div className="academy-copy">
+              <div className="section-label">EduHeTech Academy</div>
+
+              <h2>Learn the skills to build your future.</h2>
+
+              <p>
+                A practical learning environment for people who want to
+                understand technology, create digital products and discover
+                new opportunities.
               </p>
 
-              <Link href="/blog" className="text-button">
-                Visit the Blog
-                <ArrowRight size={17} />
-              </Link>
+              <a href="#contact" className="academy-button">
+                Academy — coming soon
+                <ArrowRight size={15} />
+              </a>
             </div>
+
+            <div className="academy-topics">
+              {academyTopics.map((topic) => (
+                <div className="topic" key={topic}>
+                  <span>{topic}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= AI ================= */}
+      <section className="section ai-section" id="ai">
+        <div className="container">
+          <div className="ai-grid">
+            <div className="ai-visual">
+              <div className="ai-ring" />
+
+              <div className="ai-core">
+                <Brain size={48} strokeWidth={1.5} />
+              </div>
+
+              <div className="ai-chip one">AI Learning</div>
+              <div className="ai-chip two">Smart Health</div>
+              <div className="ai-chip three">Automation</div>
+              <div className="ai-chip four">Innovation</div>
+            </div>
+
+            <div className="ai-copy">
+              <div className="section-label">AI & Innovation</div>
+
+              <h2>Building with intelligence.</h2>
+
+              <p>
+                We are exploring how artificial intelligence can make
+                education, health technology and digital products more useful,
+                accessible and practical.
+              </p>
+
+              <div className="ai-points">
+                <div className="ai-point">
+                  <Check size={17} />
+                  AI-powered learning experiences
+                </div>
+
+                <div className="ai-point">
+                  <Check size={17} />
+                  Intelligent health technology
+                </div>
+
+                <div className="ai-point">
+                  <Check size={17} />
+                  Future-focused EduHeTech products
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= BLOG ================= */}
+      <section className="section section-light" id="blog">
+        <div className="container">
+          <div className="section-heading center">
+            <div className="section-label">EduHeTech Blog</div>
+
+            <h2>Ideas that help you move forward.</h2>
+
+            <p>
+              Useful ideas and practical knowledge across health, technology,
+              AI, learning and digital skills.
+            </p>
           </div>
 
           <div className="content-grid">
-            {blogTopics.map((item) => {
+            {blogItems.map((item) => {
               const Icon = item.icon;
 
               return (
-                <Link href="/blog" className="content-card" key={item.title}>
+                <article className="content-card" key={item.title}>
                   <div className="content-card-icon">
-                    <Icon size={21} />
+                    <Icon size={25} />
                   </div>
 
                   <h3>{item.title}</h3>
 
                   <p>{item.description}</p>
-
-                  <span>
-                    Read articles
-                    <ArrowRight size={16} />
-                  </span>
-                </Link>
+                </article>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* RESOURCES */}
-      <section className="section resources-section" id="resources">
+      {/* ================= RESOURCES ================= */}
+      <section className="section" id="resources">
         <div className="container">
-          <div className="section-heading">
-            <div className="eyebrow">KNOWLEDGE & RESOURCES</div>
+          <div className="section-heading center">
+            <div className="section-label">Resources</div>
 
-            <h2>
-              Useful knowledge.
-              <br />
-              <span>Practical tools.</span>
-            </h2>
+            <h2>Useful knowledge, within reach.</h2>
 
             <p>
-              A growing library of resources designed to help learners,
-              creators and professionals move forward.
+              Practical materials and digital resources designed to help you
+              learn, create and keep growing.
             </p>
           </div>
 
-          <div className="content-grid resources-grid">
-            {resources.map((item) => {
+          <div className="content-grid">
+            {resourceItems.map((item) => {
               const Icon = item.icon;
 
               return (
-                <Link
-                  href="/resources"
-                  className="resource-card"
-                  key={item.title}
-                >
-                  <div className="resource-card-icon">
-                    <Icon size={21} />
+                <article className="content-card" key={item.title}>
+                  <div className="content-card-icon">
+                    <Icon size={25} />
                   </div>
 
                   <h3>{item.title}</h3>
 
                   <p>{item.description}</p>
-
-                  <span>
-                    Explore resources
-                    <ArrowRight size={16} />
-                  </span>
-                </Link>
+                </article>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="section about-section" id="about">
-        <div className="container about-grid">
-          <div>
-            <div className="eyebrow">ABOUT EDUHETECH</div>
+      {/* ================= ABOUT ================= */}
+      <section className="section section-light" id="about">
+        <div className="container">
+          <div className="about-layout">
+            <div className="about-copy">
+              <div className="section-label">About EduHeTech</div>
 
-            <h2>
-              Technology
-              <br />
-              <span>with purpose.</span>
-            </h2>
-          </div>
+              <h2>Technology with purpose.</h2>
 
-          <div>
-            <p className="about-lead">
-              EduHeTech Technologies Limited is building a technology-powered
-              ecosystem focused on health, education, AI, digital skills and
-              knowledge.
-            </p>
+              <p>
+                EduHeTech Technologies Limited is building a growing ecosystem
+                where technology, education, health and innovation meet.
+              </p>
 
-            <p>
-              Our goal is simple: create useful digital products that help
-              people learn, create opportunities and participate in the future
-              of technology.
-            </p>
+              <p>
+                Our goal is simple: create useful digital products that help
+                people learn, solve problems, build skills and discover new
+                possibilities.
+              </p>
 
-            <div className="values-grid">
-              <div>
-                <strong>Practical</strong>
-                <span>We build for real-world needs.</span>
-              </div>
-
-              <div>
-                <strong>Accessible</strong>
-                <span>We make technology easier to use.</span>
-              </div>
-
-              <div>
-                <strong>Innovative</strong>
-                <span>We keep exploring what is possible.</span>
-              </div>
+              <p>
+                From health education platforms to AI-powered tools and digital
+                learning experiences, we are building for today while preparing
+                for tomorrow.
+              </p>
             </div>
 
-            <Link href="/about" className="text-button">
-              Learn more about EduHeTech
-              <ArrowRight size={17} />
-            </Link>
+            <div className="values">
+              <div className="value">
+                <div className="value-icon">
+                  <BriefcaseBusiness size={19} />
+                </div>
+
+                <div>
+                  <h3>Practical</h3>
+                  <p>
+                    We focus on solutions that solve real problems and create
+                    useful experiences.
+                  </p>
+                </div>
+              </div>
+
+              <div className="value">
+                <div className="value-icon">
+                  <CircleHelp size={19} />
+                </div>
+
+                <div>
+                  <h3>Accessible</h3>
+                  <p>
+                    We believe useful technology and knowledge should be easier
+                    for more people to access.
+                  </p>
+                </div>
+              </div>
+
+              <div className="value">
+                <div className="value-icon">
+                  <Lightbulb size={19} />
+                </div>
+
+                <div>
+                  <h3>Innovative</h3>
+                  <p>
+                    We continuously explore new ideas, tools and technologies
+                    to improve what we build.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-section">
-        <div className="container cta-inner">
-          <div>
-            <div className="eyebrow eyebrow-light">LET'S BUILD THE FUTURE</div>
-
-            <h2>
-              Learn something.
-              <br />
-              Create something.
-            </h2>
+      {/* ================= CTA ================= */}
+      <section className="cta" id="contact">
+        <div className="container">
+          <div className="cta-box">
+            <h2>Learn something. Create something.</h2>
 
             <p>
-              Follow EduHeTech as we build products, learning experiences and
-              technology for a smarter future.
-            </p>
-          </div>
-
-          <a href="mailto:eduhetech@gmail.com" className="button button-light">
-            Contact EduHeTech
-            <ArrowRight size={18} />
-          </a>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="container footer-main">
-          <div className="footer-brand">
-            <Link href="/" className="brand">
-              <span className="brand-mark">
-                <Sparkles size={19} strokeWidth={2.4} />
-              </span>
-
-              <span className="brand-text">
-                <strong>EduHeTech</strong>
-                <small>Technologies Limited</small>
-              </span>
-            </Link>
-
-            <p>
-              Technology-powered education and digital solutions for health,
-              learning and the future.
+              Follow the EduHeTech journey as we build technology-powered
+              education and digital solutions for the future.
             </p>
 
-            <span className="footer-tagline">Learn. Create. Earn.</span>
-          </div>
-
-          <div className="footer-column">
-            <h4>Explore</h4>
-            <Link href="/health">Health</Link>
-            <Link href="/academy">Academy</Link>
-            <Link href="/ai">AI & Innovation</Link>
-            <Link href="/about">About</Link>
-          </div>
-
-          <div className="footer-column">
-            <h4>Knowledge</h4>
-            <Link href="/blog">Blog</Link>
-            <Link href="/resources">Resources</Link>
-            <Link href="/explore">Explore</Link>
-          </div>
-
-          <div className="footer-column">
-            <h4>Products</h4>
             <a
-              href="https://therapydent.eduhetech.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:eduhetech@gmail.com"
+              className="cta-button"
             >
-              TherapyDent 2.0
+              Contact EduHeTech
+              <ArrowRight size={15} />
             </a>
-            <Link href="/health">OralScan AI</Link>
-            <Link href="/health">More products</Link>
           </div>
         </div>
+      </section>
 
-        <div className="container footer-bottom">
-          <span>
-            © 2026 EduHeTech Technologies Limited. All rights reserved.
-          </span>
+      {/* ================= FOOTER ================= */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <a href="#home" className="logo">
+                <span className="logo-mark">
+                  <Sparkles size={18} />
+                </span>
 
-          <a href="mailto:eduhetech@gmail.com">eduhetech@gmail.com</a>
+                <span>
+                  EduHe<span>Tech</span>
+                </span>
+              </a>
+
+              <p>
+                Learn. Create. Earn.
+                <br />
+                Technology • Education • Innovation
+              </p>
+            </div>
+
+            <div className="footer-column">
+              <h4>Explore</h4>
+
+              <a href="#health">Health</a>
+              <a href="#academy">Academy</a>
+              <a href="#ai">AI & Innovation</a>
+              <a href="#about">About</a>
+            </div>
+
+            <div className="footer-column">
+              <h4>Knowledge</h4>
+
+              <a href="#blog">Blog</a>
+              <a href="#resources">Resources</a>
+              <a href="#academy">Learning</a>
+            </div>
+
+            <div className="footer-column">
+              <h4>Products</h4>
+
+              <a
+                href="https://therapydent.eduhetech.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                TherapyDent 2.0
+              </a>
+
+              <a href="#health">Health Apps</a>
+              <a href="#ai">AI Projects</a>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span>
+              © 2026 EduHeTech Technologies Limited. All rights reserved.
+            </span>
+
+            <span>Built with purpose.</span>
+          </div>
         </div>
       </footer>
     </main>
