@@ -57,7 +57,7 @@ export default function HomePage() {
           <button
             className="menu-button"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? <X size={25} /> : <Menu size={25} />}
           </button>
@@ -68,24 +68,31 @@ export default function HomePage() {
             <Link href="/" onClick={closeMenu}>
               Home
             </Link>
+
             <Link href="/health" onClick={closeMenu}>
               Health
             </Link>
+
             <Link href="/academy" onClick={closeMenu}>
               Academy
             </Link>
+
             <Link href="/ai" onClick={closeMenu}>
               AI & Innovation
             </Link>
+
             <Link href="/blog" onClick={closeMenu}>
               Blog
             </Link>
+
             <Link href="/resources" onClick={closeMenu}>
               Resources
             </Link>
+
             <Link href="/about" onClick={closeMenu}>
               About
             </Link>
+
             <Link href="/explore" onClick={closeMenu}>
               Explore
             </Link>
@@ -255,71 +262,21 @@ export default function HomePage() {
               </a>
             </div>
 
+            {/* REAL THERAPYDENT SCREENSHOTS */}
             <div className="featured-screen">
-  <div className="therapydent-real-screens">
-    <div className="therapydent-screen-main">
-      <img
-        src="/therapydent-dashboard.jpg"
-        alt="TherapyDent 2.0 student dashboard"
-      />
-    </div>
-
-    <div className="therapydent-screen-secondary">
-      <img
-        src="/therapydent-features.jpg"
-        alt="TherapyDent 2.0 learning and clinical features"
-      />
-    </div>
-  </div>
-</div>
-
-              <div className="screen-body">
-                <div className="screen-sidebar">
-                  <div className="screen-logo">
-                    <Stethoscope size={18} />
-                  </div>
-
-                  <div />
-                  <div />
-                  <div />
-                  <div />
+              <div className="therapydent-real-screens">
+                <div className="therapydent-screen-main">
+                  <img
+                    src="/therapydent-dashboard.jpg"
+                    alt="TherapyDent 2.0 student dashboard"
+                  />
                 </div>
 
-                <div className="screen-main">
-                  <div className="screen-welcome">
-                    <small>THERAPYDENT 2.0</small>
-                    <strong>Learn. Practise. Grow.</strong>
-                  </div>
-
-                  <div className="screen-stats">
-                    <div>
-                      <b>XP</b>
-                      <strong>1,250</strong>
-                    </div>
-
-                    <div>
-                      <b>LESSONS</b>
-                      <strong>24</strong>
-                    </div>
-
-                    <div>
-                      <b>STREAK</b>
-                      <strong>7</strong>
-                    </div>
-                  </div>
-
-                  <div className="screen-course">
-                    <div className="course-icon">
-                      <HeartPulse size={20} />
-                    </div>
-
-                    <div>
-                      <small>CONTINUE LEARNING</small>
-                      <strong>Foundation of Dental Therapy</strong>
-                    </div>
-
-                    <ChevronRight size={18} />
-                  </div>
+                <div className="therapydent-screen-secondary">
+                  <img
+                    src="/therapydent-features.jpg"
+                    alt="TherapyDent 2.0 learning and clinical features"
+                  />
                 </div>
               </div>
             </div>
@@ -746,7 +703,11 @@ export default function HomePage() {
           <div className="footer-column">
             <h4>Resources</h4>
             <Link href="/resources">Resources</Link>
-            <a href="mailto:eduhetech@gmail.com">Contact</a>
+
+            <a href="mailto:eduhetech@gmail.com">
+              Contact
+            </a>
+
             <a
               href="https://therapydent.eduhetech.com/"
               target="_blank"
