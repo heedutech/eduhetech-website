@@ -256,11 +256,22 @@ export default function HomePage() {
             </div>
 
             <div className="featured-screen">
-              <div className="screen-top">
-                <span />
-                <span />
-                <span />
-              </div>
+  <div className="therapydent-real-screens">
+    <div className="therapydent-screen-main">
+      <img
+        src="/therapydent-dashboard.jpg"
+        alt="TherapyDent 2.0 student dashboard"
+      />
+    </div>
+
+    <div className="therapydent-screen-secondary">
+      <img
+        src="/therapydent-features.jpg"
+        alt="TherapyDent 2.0 learning and clinical features"
+      />
+    </div>
+  </div>
+</div>
 
               <div className="screen-body">
                 <div className="screen-sidebar">
